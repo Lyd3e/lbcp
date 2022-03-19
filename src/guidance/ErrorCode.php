@@ -5,7 +5,7 @@
  * @author Raj Luo
  */
 
-namespace Lyd3e\Lbcp\Basic;
+namespace Lyd3e\Lbcp\Guidance;
 
 class ErrorCode
 {

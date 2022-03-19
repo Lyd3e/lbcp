@@ -5,13 +5,13 @@
  * @author Raj Luo
  */
 
-namespace Lyd3e\Lbcp\Basic;
+namespace Lyd3e\Lbcp\Arithmetic;
 
 use Exception;
 
 class SnowFlake
 {
-    const TWEPOCH = 1638288000; // 时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动）
+    const INITIALLY = 1638288000; // 时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动）
 
     const MACHINE_ID_BITS    = 2; // 机器标识位数
     const DATACENTER_ID_BITS = 1; // 数据中心标识位数
@@ -81,7 +81,7 @@ class SnowFlake
 
         $this->lastTimestamp = $timestamp;
 
-        return (($timestamp - self::TWEPOCH) << $this->timestampLeftShift) |
+        return (($timestamp - self::INITIALLY) << $this->timestampLeftShift) |
             ($this->datacenterId << $this->datacenterIdShift) |
             ($this->machineId << $this->machineIdShift) |
             $this->sequence;
@@ -113,4 +113,3 @@ class SnowFlake
         return floor(microtime(true) * 1);
     }
 }
-?>

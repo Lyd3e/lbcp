@@ -5,7 +5,7 @@
  * @author Raj Luo
  */
 
-namespace Lyd3e\Lbcp\Basic;
+namespace Lyd3e\Lbcp\Safety;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
