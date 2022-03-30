@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
+use Lyd3e\Lbcp\Guidance\ErrorCode;
 
 class Lyd3e extends Controller
 {
