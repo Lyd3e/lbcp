@@ -73,22 +73,12 @@ class Lyd3e extends Controller
      * @param string $httpCode
      * @return \Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function responseHandler($code='00000', $message='', $data='', $httpCode='200')
+    public function responseHandler($code='00000', $message='', $data='NO_DATA_TYPE', $httpCode='200')
     {
         //错误信息处理
         if (!isset($message) || empty($message)) {
             $message = ErrorCode::getErrorMessage($code);
         }
-
-        //空数据处理
-        if (!isset($data) || empty($data)) {
-            $data = [];
-        }
-
-        /*//错误响应日志记录
-        if ($code != '00000') {
-
-        }*/
 
         $return = [
             'code'    => $code,
@@ -96,6 +86,21 @@ class Lyd3e extends Controller
             'data'    => $data
         ];
 
+        //空数据处理
+        if (!isset($data) || empty($data)) {
+            $data = [];
+        }
+		
+		//无数据类型处理
+        if ($data == 'NO_DATA_TYPE') {
+            unset($return['data']);
+        }
+
+        /*//错误响应日志记录
+        if ($code != '00000') {
+
+        }*/
+		
         return response()->json($return)->setEncodingOptions(JSON_UNESCAPED_UNICODE)->setStatusCode($httpCode);
     }
 
