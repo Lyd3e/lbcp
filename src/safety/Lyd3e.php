@@ -54,8 +54,10 @@ class Lyd3e extends Controller
 
         //解密请求参数
         $params = $request['params'];
+        
         try {
             $params = Crypt::decryptString($params);
+
         } catch (\Exception $e) {
             return $this->responseHandler('A0427');
         }
