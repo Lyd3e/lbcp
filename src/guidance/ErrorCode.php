@@ -242,6 +242,7 @@ class ErrorCode
     {
         if (isset(self::$errorMessage[$errorCode])) {
             return self::$errorMessage[$errorCode];
+
         } else {
             return '';
         }

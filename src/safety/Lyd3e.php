@@ -8,6 +8,7 @@
 namespace Lyd3e\Lbcp\Safety;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
@@ -35,7 +36,7 @@ class Lyd3e extends Controller
      * 参数解密
      *
      * @param $request
-     * @return \Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\JsonResponse
      */
     public function paramsToDecrypt($request)
     {
@@ -73,7 +74,7 @@ class Lyd3e extends Controller
      * @param string $message
      * @param string $data
      * @param string $httpCode
-     * @return \Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\JsonResponse
      */
     public function responseHandler($code='00000', $message='', $data='NO_DATA_TYPE', $httpCode='200')
     {
@@ -109,7 +110,7 @@ class Lyd3e extends Controller
     /**
      * 参数加密
      *
-     * @return \Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse|\Symfony\Component\HttpFoundation\JsonResponse
      */
     /*public function paramsToEncrypt()
     {
