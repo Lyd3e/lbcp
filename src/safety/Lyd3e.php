@@ -21,7 +21,7 @@ class Lyd3e extends Controller
      *
      * @var string
      */
-    public $params = '';
+    public $params = [];
 
     /**
      * Lyd3e constructor.
@@ -112,11 +112,9 @@ class Lyd3e extends Controller
      *
      * @return JsonResponse|\Symfony\Component\HttpFoundation\JsonResponse
      */
-    /*public function paramsToEncrypt()
+    public function paramsToEncrypt()
     {
         //file_get_contents("php://input")获取请求原始数据流
-        $params = json_decode(file_get_contents("php://input"));
-
-        return $this->responseHandler('00000', null, Crypt::encryptString(json_encode($params)));
-    }*/
+        return Crypt::encryptString(json_encode(json_decode(file_get_contents("php://input"))));
+    }
 }

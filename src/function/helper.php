@@ -207,3 +207,33 @@ if (!function_exists('ByteUnitConversion')) {
         }
     }
 }
+
+if (!function_exists('modifyEnv')) {
+    /**
+     * 动态配置.env文件
+     *
+     * str_contains()从8.0 PHP版本开始可用
+     *
+     * @param array $data
+     */
+    function modifyEnv(array $data)
+    {
+        $envPath = base_path() . DIRECTORY_SEPARATOR . '.env';
+
+        $contentArray = collect(file($envPath, FILE_IGNORE_NEW_LINES));
+
+        $contentArray->transform(function ($item) use ($data) {
+            foreach ($data as $key => $value) {
+                if (str_contains($item, $key)) {
+                    return $key . '=' . $value;
+                }
+            }
+
+            return $item;
+        });
+
+        $content = implode($contentArray->toArray(), "\n");
+
+        \File::put($envPath, $content);
+    }
+}
